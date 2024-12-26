@@ -92,9 +92,14 @@
         <input type="text" [(ngModel)]="productobj.productprice" name="productprice"  class="form-control" />
     </div>
     <div class="col-6">
-        <label>Category</label>
-        <input type="text" [(ngModel)]="productobj.categoryid" name="categoryid"  class="form-control" />
+        <label for="category">Category</label>
+        <select [(ngModel)]="productobj.categoryid" name="categoryid" class="form-control" id="category">
+            <option *ngFor="let category of categorylist" [value]="category.productid">
+                {{ category.productname }}
+            </option>
+        </select>
     </div>
+    
     <div class="col-6">
         <label>Time span</label>
         <input type="text"  [(ngModel)]="productobj.develerytimespan" name="develerytimespan" class="form-control" />

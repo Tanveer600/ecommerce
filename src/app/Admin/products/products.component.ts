@@ -27,6 +27,9 @@ productobj:any={
 "productimageurl":"",
 };
 ngOnInit(): void {
+this.getproduct();
+}
+getproduct(){
   debugger;
   this.productservice.GetAllProduct().subscribe((res:any)=>{
 this.categorylist=res.data;

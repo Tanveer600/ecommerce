@@ -13,6 +13,6 @@ export class ProductService {
 
   GetAllProduct(){
     debugger;
-   return this.http.get(Constant.API_END_POINT +Constant.METHODS.GET_ALL_CATEGORY);
+   return this.http.get(Constant.API_END_POINT);
   }
 }
