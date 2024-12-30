@@ -21,7 +21,10 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              "src/assets",
+  "src/favicon.ico",
               {
+                
                 "glob": "**/*",
                 "input": "public"
               }
@@ -30,7 +33,7 @@
               "src/styles.css",
               "node_modules/bootstrap/scss/bootstrap.scss"
             ],
-            "scripts": ["node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"]
+            "scripts": []
           },
           "configurations": {
             "production": {

@@ -38,6 +38,9 @@ this.productlist=res;
 console.info("this.productlist",this.productlist);
   });
 }
+onImageError(event: Event) {
+  console.error('Image not found:', event);
+}
 
 getcategory(){
   debugger;
