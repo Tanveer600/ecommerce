@@ -13,47 +13,17 @@
         </div>
             </div>
             <div class="card-body">
-        <div class="row">
-            <div class="col-3">             
-                    <div class="card">
-                        <img class="card-img-top" src="img_avatar1.png" alt="Card image">
-                        <div class="card-body">
-                          <h4 class="card-title">John Doe</h4>
-                          <p class="card-text">Some example text.</p>
-                          <a href="#" class="btn btn-primary">See Profile</a>
-                        </div>                    
-                    </div>
-            </div>
-            <div class="col-3">             
+        <div class="row">         
+            <div class="col-3" *ngFor="let item of productlist">
                 <div class="card">
-                    <img class="card-img-top" src="img_avatar1.png" alt="Card image">
+                    <img class="card-img-top" [src]=item.productimageurl alt="Card image">
                     <div class="card-body">
-                      <h4 class="card-title">John Doe</h4>
-                      <p class="card-text">Some example text.</p>
-                      <a href="#" class="btn btn-primary">See Profile</a>
+                        <h4 class="card-title">{{item.productname}}</h4>
+                        <p class="card-text">{{item.productshortname}}</p>
+                        <a href="#" class="btn btn-primary">See Profile</a>
                     </div>                    
                 </div>
-        </div>
-        <div class="col-3">             
-            <div class="card">
-                <img class="card-img-top" src="img_avatar1.png" alt="Card image">
-                <div class="card-body">
-                  <h4 class="card-title">John Doe</h4>
-                  <p class="card-text">Some example text.</p>
-                  <a href="#" class="btn btn-primary">See Profile</a>
-                </div>                    
-            </div>
-    </div>
-    <div class="col-3">             
-        <div class="card">
-            <img class="card-img-top" src="img_avatar1.png" alt="Card image">
-            <div class="card-body">
-              <h4 class="card-title">John Doe</h4>
-              <p class="card-text">Some example text.</p>
-              <a href="#" class="btn btn-primary">See Profile</a>
-            </div>                    
-        </div>
-</div>
+            </div>          
         </div>
             </div>
         </div>
@@ -75,43 +45,65 @@
     <div class="card">
     <div class="card-body">
 <div class="row">
-    <div class="col-6">
+    <div class="col-12">
         <label>SKU</label>
         <input type="text" [(ngModel)]="productobj.productsku" name="productsku"  class="form-control" />
     </div>
-    <div class="col-6">
+</div>
+    <div class="row">
+        <div class="col-12">
         <label>Product Name</label>
         <input type="text" [(ngModel)]="productobj.productname" name="productname" class="form-control" />
     </div>
-    <div class="col-6">
+</div>
+    <div class="row">
+        <div class="col-12">
         <label>Short Name</label>
         <input type="text"  [(ngModel)]="productobj.productshortname" name="productshortname" class="form-control" />
     </div>
-    <div class="col-6">
+</div>
+    <div class="row">
+        <div class="col-12">
         <label>Price</label>
         <input type="text" [(ngModel)]="productobj.productprice" name="productprice"  class="form-control" />
     </div>
-    <div class="col-6">
+</div>
+    <div class="row">
+        <div class="col-12">
         <label for="category">Category</label>
-        <select [(ngModel)]="productobj.categoryid" name="categoryid" class="form-control" id="category">
-            <option *ngFor="let category of categorylist" [value]="category.productid">
-                {{ category.productname }}
+        <select [(ngModel)]="productobj.categoryid" name="categoryid" class="form-select" id="category">
+            <option *ngFor="let category of categorylist" [value]="category.categoryid">
+                {{ category.categoryname }}
             </option>
         </select>
     </div>
-    
-    <div class="col-6">
+</div>
+    <div class="row">
+        <div class="col-12">
         <label>Time span</label>
         <input type="text"  [(ngModel)]="productobj.develerytimespan" name="develerytimespan" class="form-control" />
     </div>
-    <div class="col-6">
+</div>
+    <div class="row">
+        <div class="col-12">
         <label>Image Url</label>
-        <input type="text"  [(ngModel)]="productobj.productdescription" name="productdescription" class="form-control" />
+        <input type="text"  [(ngModel)]="productobj.productimageurl" name="productdescription" class="form-control" />
     </div>
-    <div class="col-6">
+</div>
+    <div class="row">
+        <div class="col-12">
         <label>Description</label>
         <input type="textarea" [(ngModel)]="productobj.productdescription" name="productdescription"  class="form-control" />
     </div>
+</div>
+<div class="row">
+    <div class="col-6">
+ 
+    <button type="button" class="btn btn-success">Reset</button>
+</div>
+<div class="col-6">
+    <button type="button" class="btn btn-success" (click)="Onsave()">Create Product</button>
+</div>
 </div>
     </div>
 </div>

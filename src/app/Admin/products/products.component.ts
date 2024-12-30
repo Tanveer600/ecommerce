@@ -13,6 +13,7 @@ import { ProductService } from '../../services/product.service';
 export class ProductsComponent implements OnInit {
   constructor(private productservice:ProductService){}
 issidepanelvisible:boolean=false;
+productlist:any[]=[];
 categorylist:any[]=[];
 productobj:any={
 "productid":0,
@@ -28,19 +29,37 @@ productobj:any={
 };
 ngOnInit(): void {
 this.getproduct();
+this.getcategory();
 }
 getproduct(){
   debugger;
   this.productservice.GetAllProduct().subscribe((res:any)=>{
-this.categorylist=res.data;
+this.productlist=res;
+console.info("this.productlist",this.productlist);
+  });
+}
+
+getcategory(){
+  debugger;
+  this.productservice.GetAllCategory().subscribe((res:any)=>{
+this.categorylist=res;
 console.info("this.categorylist",this.categorylist);
   });
 }
+
+
 // [(ngModel)]="productobj."
 opensidepanel(){
   this.issidepanelvisible=true;
 }
 closesidepanel(){
   this.issidepanelvisible=false;
+}
+
+Onsave(){
+  debugger;
+  this.productservice.createProduct(this.productobj).subscribe((res:any)=>{
+alert("product added successfully");
+  });
 }
 }
