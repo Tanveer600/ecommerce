@@ -15,21 +15,22 @@ export class ProductsComponent implements OnInit {
 issidepanelvisible:boolean=false;
 productlist:any[]=[];
 categorylist:any[]=[];
-productobj:any={
-"productid":0,
-"productsku":"",
-"productname":"",
-"productprice":0,
-"productshortname":"",
-"productdescription":"",
-"createddate":"",
-"develerytimespan":"",
-"categoryid":0,
-"productimageurl":"",
+productobj: any = {
+  productid: 0,
+  productsku: "",
+  productname: "",
+  productprice: 0,
+  productshortname: "",
+  productdescription: "",
+  createddate: new Date().toISOString(), // Assign date directly
+  develerytimespan: "",
+  categoryid: 0,
+  productimageurl: ""
 };
+
 ngOnInit(): void {
 this.getproduct();
-this.getcategory();
+
 }
 getproduct(){
   debugger;
@@ -42,13 +43,7 @@ onImageError(event: Event) {
   console.error('Image not found:', event);
 }
 
-getcategory(){
-  debugger;
-  this.productservice.GetAllCategory().subscribe((res:any)=>{
-this.categorylist=res;
-console.info("this.categorylist",this.categorylist);
-  });
-}
+
 
 
 // [(ngModel)]="productobj."
@@ -61,8 +56,15 @@ closesidepanel(){
 
 Onsave(){
   debugger;
-  this.productservice.createProduct(this.productobj).subscribe((res:any)=>{
-alert("product added successfully");
-  });
+  this.productservice.createProduct(this.productobj).subscribe(
+    (res: any) => {
+      alert('Product added successfully');
+    },
+    (error) => {
+      console.error('Error adding product:', error);
+      alert('Failed to add product. Please check logs for more details.');
+    }
+  );
+  
 }
 }

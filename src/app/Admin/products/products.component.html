@@ -16,8 +16,7 @@
         <div class="row">         
             <div class="col-3" *ngFor="let item of productlist">
                 <div class="card">
-                    <img [src]="'assets/Images/' + item.imageName" alt="Product Image" (error)="onImageError($event)">
-
+                    <img [src]="'assets/Images/' + item.productimageurl" alt="Product Image" (error)="onImageError($event)">
                     <div class="card-body">
                         <h4 class="card-title">{{item.productname}}</h4>
                         <p class="card-text">{{item.productshortname}}</p>
@@ -72,11 +71,12 @@
     <div class="row">
         <div class="col-12">
         <label for="category">Category</label>
-        <select [(ngModel)]="productobj.categoryid" name="categoryid" class="form-select" id="category">
+        <input type="text" [(ngModel)]="productobj.categoryid" name="categoryid"  class="form-control" />
+        <!-- <select [(ngModel)]="productobj.categoryid" name="categoryid" class="form-select" id="category">
             <option *ngFor="let category of categorylist" [value]="category.categoryid">
                 {{ category.categoryname }}
             </option>
-        </select>
+        </select> -->
     </div>
 </div>
     <div class="row">
